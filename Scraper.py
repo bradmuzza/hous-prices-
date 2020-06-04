@@ -19,7 +19,9 @@ land = "land"
 retire = "retire"
 
 def get_house_price(property_type, new_or_used):
-    driver = webdriver.Chrome(f"C:/DRIVERS/chromedriver2.exe")
+    options = webdriver.ChromeOptions()
+    options.add_argument("--no-sandbox")
+    driver = webdriver.Chrome(f"C:/DRIVERS/chromedriver.exe", options=options)
     driver.maximize_window()
     driver.implicitly_wait(4)
     today = datetime.datetime.now()
@@ -130,4 +132,21 @@ def run_regression():
 
 
 #run_regression()
+# get_house_prices()
+# telstra_URL =r"https://apps.apple.com/au/app/my-telstra/id543829966#see-all/reviews"
+# Aldi_URL = r"https://apps.apple.com/us/app/aldimobile-provided-by-medionmobile/id616626316?ls=1"
+# def get_app_review(url, provder):
+#     driver = webdriver.Chrome(f"C:/DRIVERS/chromedriver.exe")
+#     driver.maximize_window()
+#     driver.implicitly_wait(4)
+#     today = datetime.datetime.now()
+#     excel_name = "app_reviews.xlsx"
+#     sheet_name = "Data"
+#     wb = openpyxl.load_workbook(excel_name)
+#     x_path =r'//*[@id="ember147"]/section[5]/div[3]/div'
+#     cards = driver.find_elements_by_xpath(x_path)
+#     for item in cards:
+#         soup = BeautifulSoup(item.page_source, "html.parser")
+#         rating = item.find("figure", class_="general-features__icon general-features__beds").get("aria-label")
+
 get_house_prices()
